@@ -43,7 +43,7 @@ public class Offer implements Serializable {
 
     private Boolean isSmokerFriendly;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     private User user;
 
     @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "offer")
@@ -93,6 +93,15 @@ public class Offer implements Serializable {
         isAnimalFriendly = animalFriendly;
         return this;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
 
     public Boolean getSmokerFriendly() {
         return isSmokerFriendly;
