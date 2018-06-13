@@ -51,13 +51,7 @@ public class OfferRepositoryTest {
     private UserRepository userRepository;
 
     @Inject
-    private AddressRepository addressRepository;
-
-    @Inject
     private OfferRepository offerRepository;
-
-    @Inject
-    private ReservationRepository reservationRepository;
 
     private EntityFactoryPersistence ef = new EntityFactoryPersistence();
 
