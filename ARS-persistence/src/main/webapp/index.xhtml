@@ -62,7 +62,7 @@
                                 <h:outputText value="Accommodation type"/>
                                 <br/>
                                 <h:selectOneMenu value="#{offerFilterBean.accommodationTypeFilter}">
-                                    <f:selectItem itemValue="#{null}" itemLabel="--select--" />
+                                    <f:selectItem itemValue="#{null}" itemLabel="--select--"/>
                                     <f:selectItems value="#{offerFilterAutocomplete.accomodationOptions}"/>
                                     <a4j:ajax render="offersTable@body" event="change"/>
                                 </h:selectOneMenu>
@@ -70,16 +70,18 @@
                         </f:facet>
                         <h:outputText value="#{offer.accommodationType}"/>
                     </rich:column>
-                    <rich:column  filter="#{offerFilterBean.locationFilterImpl}"
-                                  filterType="custom">
+                    <rich:column filter="#{offerFilterBean.locationFilterImpl}"
+                                 filterType="custom">
                         <f:facet name="header">
                             <h:panelGroup>
                                 <h:outputText value="Location  "/>
                                 <br/>
-                                <a4j:jsFunction name="blurFunction" execute="autoCompleteLocation" render="offersTable@body"/>
+                                <a4j:jsFunction name="blurFunction" execute="autoCompleteLocation"
+                                                render="offersTable@body"/>
                                 <rich:autocomplete mode="client" onblur="blurFunction()"
                                                    autocompleteList="#{offerFilterAutocomplete.addresses}" var="address"
-                                                   fetchValue="#{address.city}" layout="div" value="#{offerFilterBean.locationFilter}">
+                                                   fetchValue="#{address.city}" layout="div"
+                                                   value="#{offerFilterBean.locationFilter}">
                                     <b>#{address.city}</b> - <i>(#{address.country}) </i>
                                 </rich:autocomplete>
                             </h:panelGroup>
@@ -108,7 +110,8 @@
                                 <br/>
                                 <h:panelGrid columns="2">
                                     <h:outputText value="Min: "/>
-                                    <rich:inputNumberSpinner value="#{offerFilterBean.capacityFilter}" minValue="1" maxValue="20"
+                                    <rich:inputNumberSpinner value="#{offerFilterBean.capacityFilter}" minValue="1"
+                                                             maxValue="20"
                                                              step="1">
                                         <a4j:ajax render="offersTable@body" event="change"/>
                                     </rich:inputNumberSpinner>
@@ -122,8 +125,8 @@
                         <f:facet name="header">
                             <h:panelGroup>
                                 <h:outputText value="Smoker friendly"/>
-                                <h:selectBooleanCheckbox value="#{offerFilterBean.smokerFriendlyFilter}" >
-                                    <a4j:ajax event="click" render="offersTable" />
+                                <h:selectBooleanCheckbox value="#{offerFilterBean.smokerFriendlyFilter}">
+                                    <a4j:ajax event="click" render="offersTable"/>
                                 </h:selectBooleanCheckbox>
                             </h:panelGroup>
                         </f:facet>
@@ -133,8 +136,8 @@
                                  filterType="custom">
                         <f:facet name="header">
                             <h:outputText value="Animal friendly"/>
-                            <h:selectBooleanCheckbox value="#{offerFilterBean.animalFriendlyFilter}" >
-                                <a4j:ajax event="click" render="offersTable" />
+                            <h:selectBooleanCheckbox value="#{offerFilterBean.animalFriendlyFilter}">
+                                <a4j:ajax event="click" render="offersTable"/>
                             </h:selectBooleanCheckbox>
                         </f:facet>
                         <h:outputText value="#{offer.animalFriendly}"/>
@@ -150,5 +153,12 @@
                 </rich:dataTable>
             </h:form>
         </c:if>
+
+        <c:if test="#{userController.host}">
+            <h:form>
+                <h:button value="Create Offer" outcome="createOffer"/>
+            </h:form>
+        </c:if>
+
     </ui:define>
 </ui:composition>

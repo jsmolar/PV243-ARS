@@ -15,6 +15,7 @@ import cz.muni.fi.pv243.ars.persistence.enumeration.UserRole;
 import cz.muni.fi.pv243.ars.persistence.model.User;
 import cz.muni.fi.pv243.ars.repository.UserRepository;
 import org.keycloak.KeycloakPrincipal;
+import org.keycloak.representations.IDToken;
 
 /**
  * Created by jsmolar on 6/4/18.
@@ -48,10 +49,36 @@ public class UserController {
         context.redirect("login.jsf?faces-redirect=true");
     }
 
+    public void registerUser() {
+        if (matchUser() != null) {
+            return;
+        }
+
+        KeycloakPrincipal keycloakPrincipal = (KeycloakPrincipal) request.getUserPrincipal();
+        IDToken token = keycloakPrincipal.getKeycloakSecurityContext().getIdToken();
+
+        //        Map<String, Object> otherClaims = token.getOtherClaims();
+
+        User newUser = new User();
+
+        newUser.setKeycloakPrincipal(keycloakPrincipal.getName())
+            .setName(String.valueOf(token.getGivenName()))
+            .setSurname(String.valueOf(token.getFamilyName()))
+            .setEmail(String.valueOf(token.getEmail()))
+            .addRole(UserRole.TENANT);
+
+        //        if(otherClaims.containsKey("user_role")) {
+        //            newUser.addRole(String.valueOf(otherClaims.get("user_role")));
+        //        }
+
+        userRepository.create(newUser);
+        log.info("New User was created");
+    }
+
     public User matchUser() {
         KeycloakPrincipal keycloakPrincipal = (KeycloakPrincipal) request.getUserPrincipal();
 
-        if(keycloakPrincipal == null) {
+        if (keycloakPrincipal == null) {
             log.info("User and Keycloak Principal wants to be matched, but Principal is null");
             return null;
         }
@@ -59,6 +86,10 @@ public class UserController {
         log.info("Principal name: " + keycloakPrincipal.getName());
 
         User matchedUser = userRepository.findByKCid(keycloakPrincipal.getName());
+        if (matchedUser == null) {
+            return null;
+        }
+
         log.info("User and KC Principal are matched. User id: " + matchedUser.getId());
 
         return matchedUser;

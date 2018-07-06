@@ -4,6 +4,10 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 template="/WEB-INF/templates/default.xhtml">
     <ui:define name="content">
+        <f:metadata>
+            <f:viewAction action="#{userController.registerUser}"/>
+        </f:metadata>
+
         <h:outputLabel value="Wellcome #{userInfoBean.user.name} #{userInfoBean.user.surname}"/>
         <h:form>
             <h:commandButton value="Back home" action="/index.jsf">
