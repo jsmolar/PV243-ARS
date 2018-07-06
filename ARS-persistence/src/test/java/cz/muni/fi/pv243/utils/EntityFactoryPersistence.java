@@ -21,7 +21,6 @@ public class EntityFactoryPersistence {
         user.setName(name)
             .setSurname("surname")
             .setDateOfBirth(LocalDate.now())
-            .setPassword("123456")
             .setEmail(name + "@example.com")
             .setActive(true);
 

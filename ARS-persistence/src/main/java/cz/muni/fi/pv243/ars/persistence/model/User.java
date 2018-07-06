@@ -48,20 +48,13 @@ public class User implements Serializable {
     @Column(updatable = false, nullable = false)
     private String email;
 
-    @NotNull
-    @Column(updatable = false, nullable = false)
-    private String password;
-
     @AddressConstraint
-    @OneToOne(cascade = CascadeType.ALL, optional = false)
-    @NotNull
+    @OneToOne(cascade = CascadeType.ALL)
     private Address address;
 
-    @NotNull
-    @Column(updatable = false, nullable = false)
+    @Column(updatable = false)
     private LocalDate dateOfBirth;
 
-    @NotNull
     private Boolean isActive = true;
 
     @ElementCollection(targetClass = UserRole.class, fetch = FetchType.EAGER)
@@ -80,11 +73,10 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(String name, String surname, String email, String password, Address address, LocalDate dateOfBirth) {
+    public User(String name, String surname, String email, Address address, LocalDate dateOfBirth) {
         this.name = name;
         this.surname = surname;
         this.email = email;
-        this.password = password;
         this.address = address;
         this.dateOfBirth = dateOfBirth;
         this.isActive = true;
@@ -132,15 +124,6 @@ public class User implements Serializable {
 
     public User setEmail(String email) {
         this.email = email;
-        return this;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public User setPassword(String password) {
-        this.password = password;
         return this;
     }
 

@@ -33,6 +33,10 @@ public class UserInfoBean {
     }
 
     public Date getFormatedDateOfBirth() {
+        if(user.getDateOfBirth() == null) {
+            return null;
+        }
+
         return Date.from(user.getDateOfBirth().atStartOfDay(ZoneId.systemDefault()).toInstant());
     }
 }

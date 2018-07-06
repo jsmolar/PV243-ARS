@@ -31,7 +31,7 @@ public class CreateUserComment {
 
     public void create(Long offer_id, String message) {
         UserComment userComment = new UserComment();
-        userComment.setOffer(offerRepository.findById(Long.valueOf(offer_id)))
+        userComment.setOffer(offerRepository.findById(offer_id))
             .setComment(message)
             .setCreationDate(LocalDate.now());
         userCommentRepository.create(userComment);

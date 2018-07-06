@@ -9,9 +9,9 @@ INSERT INTO Address (id,street,city,state,country,postCode) VALUES (107,'8987 Eg
 INSERT INTO Address (id,street,city,state,country,postCode) VALUES (108,'P.O. Box 643, 1741 Mauris Avenue','Arrah','BR','French Polynesia','01870');
 INSERT INTO Address (id,street,city,state,country,postCode) VALUES (109,'Ap #864-4420 Quisque Rd.','Gravilias','San José','Tunisia','5257');
 
-INSERT INTO User (id, keycloakPrincipal, name, surname, email, password, isActive,dateOfBirth,address_id) VALUES (200, 'd805fffe-a3eb-4a9e-a839-7eb556215e3c', 'Marian', 'Dolny', 'marian.dolny@ars.cz', 'admin', true,'1967-06-21',100);
-INSERT INTO User (id, keycloakPrincipal, name, surname, email, password, isActive,dateOfBirth,address_id) VALUES (201, 'a2a46b10-2fcd-44bb-8a4e-0cb7d454c11d', 'Adam', 'Horny', 'adam.horny@ars.cz', 'admin', true,'1967-06-21',101);
-INSERT INTO User (id, keycloakPrincipal, name, surname, email, password, isActive,dateOfBirth,address_id) VALUES (202, '348c4e83-5242-451c-85d4-7ef317ec46f3', 'Juraj', 'Stredny', 'juraj.stredny@ars.cz', 'admin', true,'1967-06-21',102);
+INSERT INTO User (id, keycloakPrincipal, name, surname, email, isActive,dateOfBirth,address_id) VALUES (200, 'd805fffe-a3eb-4a9e-a839-7eb556215e3c', 'Marian', 'Dolny', 'marian.dolny@ars.cz', true,'1967-06-21',100);
+INSERT INTO User (id, keycloakPrincipal, name, surname, email, isActive,dateOfBirth,address_id) VALUES (201, '5ada8131-bb54-42d3-9ad2-0b96ce5fe762', 'Adam', 'Horny', 'adam.horny@ars.cz', true,'1967-06-21',101);
+INSERT INTO User (id, keycloakPrincipal, name, surname, email, isActive,dateOfBirth,address_id) VALUES (202, '10c72955-bfd8-427c-9681-fab521bafd29', 'Juraj', 'Stredny', 'juraj.stredny@ars.cz', true,'1967-06-21',102);
 
 INSERT INTO user_roles (user_id,roles) VALUES (200,'ADMIN');
 INSERT INTO user_roles (user_id,roles) VALUES (200,'TENANT');

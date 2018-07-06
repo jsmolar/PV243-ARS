@@ -26,10 +26,33 @@
       <url-pattern>/login.jsf</url-pattern>
     </web-resource-collection>
     <auth-constraint>
-      <role-name>user</role-name>
+      <role-name>tenant</role-name>
+      <role-name>host</role-name>
       <role-name>admin</role-name>
     </auth-constraint>
   </security-constraint>
+
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>ARS-persistence</web-resource-name>
+      <url-pattern>/reservations.jsf</url-pattern>
+      <url-pattern>/reservationDetail.jsf</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>tenant</role-name>
+      <role-name>admin</role-name>
+    </auth-constraint>
+  </security-constraint>
+
+  <!--<security-constraint>-->
+    <!--<web-resource-collection>-->
+      <!--<web-resource-name>ARS-persistence</web-resource-name>-->
+    <!--</web-resource-collection>-->
+    <!--<auth-constraint>-->
+      <!--<role-name>host</role-name>-->
+      <!--<role-name>admin</role-name>-->
+    <!--</auth-constraint>-->
+  <!--</security-constraint>-->
 
   <security-constraint>
     <web-resource-collection>
@@ -49,7 +72,11 @@
   </login-config>
 
   <security-role>
-    <role-name>user</role-name>
+    <role-name>tenant</role-name>
+  </security-role>
+
+  <security-role>
+    <role-name>host</role-name>
   </security-role>
 
   <security-role>
