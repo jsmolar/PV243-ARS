@@ -2,7 +2,6 @@ package cz.muni.fi.pv243;
 
 import static org.junit.Assert.assertEquals;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -17,11 +16,8 @@ import javax.transaction.UserTransaction;
 import cz.muni.fi.pv243.ars.persistence.enumeration.UserRole;
 import cz.muni.fi.pv243.ars.persistence.model.Address;
 import cz.muni.fi.pv243.ars.persistence.model.Offer;
-import cz.muni.fi.pv243.ars.persistence.model.Reservation;
 import cz.muni.fi.pv243.ars.persistence.model.User;
-//import cz.muni.fi.pv243.ars.repository.AddressRepository;
 import cz.muni.fi.pv243.ars.repository.OfferRepository;
-import cz.muni.fi.pv243.ars.repository.ReservationRepository;
 import cz.muni.fi.pv243.ars.repository.UserRepository;
 import cz.muni.fi.pv243.ars.utils.Resources;
 import cz.muni.fi.pv243.utils.EntityFactoryPersistence;
@@ -35,6 +31,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+//import cz.muni.fi.pv243.ars.repository.AddressRepository;
 
 /**
  * Created by mminatova on 6/6/18.

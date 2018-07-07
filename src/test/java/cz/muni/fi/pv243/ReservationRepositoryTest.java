@@ -1,5 +1,7 @@
 package cz.muni.fi.pv243;
 
+import static org.junit.Assert.*;
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -8,7 +10,9 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
-import javax.transaction.*;
+import javax.transaction.NotSupportedException;
+import javax.transaction.SystemException;
+import javax.transaction.UserTransaction;
 
 import cz.muni.fi.pv243.ars.persistence.enumeration.UserRole;
 import cz.muni.fi.pv243.ars.persistence.model.Address;
@@ -31,8 +35,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import static org.junit.Assert.*;
 
 
 @RunWith(Arquillian.class)
