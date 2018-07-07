@@ -1,9 +1,9 @@
 package cz.muni.fi.pv243.ars.beans;
 
-import cz.muni.fi.pv243.ars.controller.UserController;
 import cz.muni.fi.pv243.ars.persistence.model.Offer;
 import cz.muni.fi.pv243.ars.persistence.model.User;
 import cz.muni.fi.pv243.ars.repository.OfferRepository;
+import cz.muni.fi.pv243.ars.repository.UserRepository;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
@@ -22,32 +22,24 @@ public class OffersBean {
     private OfferRepository offerRepository;
 
     @Inject
-    private UserController userController;
+    private UserRepository userRepository;
 
     private User user;
-    private List<Offer> offers;
+    private List<Offer> availableOffers;
+    private List<Offer> usersOffers;
 
-    private boolean forUser;
+    public List<Offer> getAvailableOffers() {
+        return availableOffers;
+    }
 
-    public List<Offer> getOffers() {
-        return offers;
+    public List<Offer> getUsersOffers() {
+        return usersOffers;
     }
 
     @PostConstruct
     public void loadOffers() {
         user = userController.matchUser();
-        if (forUser) {
-            offers = offerRepository.findAllForUser(user);
-        } else {
-            offers = offerRepository.findAllAvailableForUser(user);
-        }
-    }
-
-    public boolean isForUser() {
-        return forUser;
-    }
-
-    public void setForUser(boolean forUser) {
-        this.forUser = forUser;
+        usersOffers = offerRepository.findAllForUser(user);
+        availableOffers = offerRepository.findAllAvailableForUser(user);
     }
 }
