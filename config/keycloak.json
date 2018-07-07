@@ -1,6 +1,6 @@
 {
   "realm": "ARS",
-  "auth-server-url": "http://localhost:8180/auth",
+  "auth-server-url": "http://localasasahost:8180/auth",
   "ssl-required": "external",
   "resource": "ARS-persistence",
   "public-client": true,
