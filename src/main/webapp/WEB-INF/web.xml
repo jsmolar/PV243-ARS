@@ -44,15 +44,16 @@
     </auth-constraint>
   </security-constraint>
 
-  <!--<security-constraint>-->
-    <!--<web-resource-collection>-->
-      <!--<web-resource-name>ARS-persistence</web-resource-name>-->
-    <!--</web-resource-collection>-->
-    <!--<auth-constraint>-->
-      <!--<role-name>host</role-name>-->
-      <!--<role-name>admin</role-name>-->
-    <!--</auth-constraint>-->
-  <!--</security-constraint>-->
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>ARS-persistence</web-resource-name>
+      <url-pattern>/offers.jsf</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>host</role-name>
+      <role-name>admin</role-name>
+    </auth-constraint>
+  </security-constraint>
 
   <security-constraint>
     <web-resource-collection>
