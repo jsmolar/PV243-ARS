@@ -1,0 +1,8 @@
+connect
+batch
+
+# configure JMS message queue
+jms-queue add --profile=full-ha --queue-address=dataQueue --entries=java:jboss/exported/jms/queue/dataQueue
+
+# execute
+run-batch
